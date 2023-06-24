@@ -1,0 +1,35 @@
+.home-container {
+    display: flex;
+    height: 75vh;
+    justify-content: space-around;
+}
+
+.hero-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    
+}
+
+.info {
+    width: 35rem;
+}
+
+.tag-line {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35rem;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30vw;
+}
+

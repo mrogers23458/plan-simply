@@ -1,0 +1,44 @@
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Calligraffitti&display=swap');
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-text {
+    font-family: 'Calligraffitti', cursive, sans-serif;
+    font-size: 2.5rem;
+}
+
+.button {
+    height: 2rem;
+    width: 5rem;
+    margin: 1rem;
+    border-radius: 9999px;
+    color: white;
+    background-color: rgb(20 184 166);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: rgb(94 234 212);
+    cursor: pointer;
+}
+
+.spacer {
+    width: 30vw;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30vw;
+}

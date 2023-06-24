@@ -1,0 +1,26 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 30vw;
+    border: 1px solid grey;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    height: 4rem;
+    font-size: 1.5rem;
+}
+
+.button-container {
+    display: flex;
+}
