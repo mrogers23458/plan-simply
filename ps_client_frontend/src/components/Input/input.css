@@ -1,0 +1,25 @@
+.field-container {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    margin-bottom: 2vh;
+}
+
+.input-field {
+    height: 4vh;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding-left: 1vw;
+}
+
+.input-field:focus {
+    outline: none;
+    border: 1px solid green;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.label {
+    font-size: 2vh;
+    padding: 0.5vh;
+    margin-bottom: 0.5vh;
+}

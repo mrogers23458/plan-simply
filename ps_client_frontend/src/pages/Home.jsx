@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import SignupForm from "../components/signup/SignupForm";
+import LoginForm from "../components/login/LoginForm";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       {/* stage left - hero */}
       <div className="hero-text-container">
         <div className="tag-line">
-          <h1>Clean. Simple. Organized</h1>
+          <h1>Clean. Simple. Organized.</h1>
         </div>
         <div className="info">
           <p>
@@ -21,7 +21,7 @@ export default function Home() {
       </div>
       {/* stage right - form */}
       <div className="form-container">
-        <SignupForm />
+        <LoginForm />
       </div>
     </div>
   );

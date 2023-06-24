@@ -1,16 +1,18 @@
-.signup-form {
+.form {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    height: 75vh;
+    height: 50vh;
+    width: 30vw;
     border: 1px solid grey;
-    padding: 1vw;
     border-radius: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
-.signup-button {
+.button {
     height: 2vh;
     width: 5vw;
+    margin: 1vw;
     border-radius: 9999px;
     font-size: 1.25vw;
     color: white;
@@ -20,4 +22,13 @@
     align-items: center;
     padding: 1vw;
     font-weight: bold;
+}
+
+.button:hover {
+    background-color: rgb(94 234 212);
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
 }

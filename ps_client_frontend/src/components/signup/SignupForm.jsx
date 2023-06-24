@@ -1,24 +1,110 @@
 import React from "react";
 import "./signupform.css";
+import Input from "../Input/Input";
+import useSignupFormReducer from "../../hooks/useSignupFormReducer";
+import {
+  SET_CONFIRM_PASSWORD,
+  SET_EMAIL,
+  SET_FIRST_NAME,
+  SET_LAST_NAME,
+  SET_PASSWORD,
+  SET_USERNAME,
+} from "../../constants";
 
 export default function SignupForm() {
+  const [signupForm, dispatch] = useSignupFormReducer();
+
+  /* Form Handlers */
+  function handleFirstName(value) {
+    dispatch({
+      type: SET_FIRST_NAME,
+      payload: value,
+    });
+  }
+
+  function handleLastName(value) {
+    dispatch({
+      type: SET_LAST_NAME,
+      payload: value,
+    });
+  }
+  function handleEmail(value) {
+    dispatch({
+      type: SET_EMAIL,
+      payload: value,
+    });
+  }
+  function handleUsername(value) {
+    dispatch({
+      type: SET_USERNAME,
+      payload: value,
+    });
+  }
+  function handlePassword(value) {
+    dispatch({
+      type: SET_PASSWORD,
+      payload: value,
+    });
+  }
+
+  function handleConfirmPassowrd(value) {
+    dispatch({
+      type: SET_CONFIRM_PASSWORD,
+      payload: value,
+    });
+  }
+
+  /* API Handlers */
+  async function handleSignup() {
+    console.log({ signupForm });
+  }
+
   return (
-    <div className="form">
-      <div className="field-container">
-        <label className="label" htmlFor="username">
-          Username
-        </label>
-        <input className="input-field" type="text" />
-      </div>
-      <div className="field-container">
-        <label className="label" htmlFor="password">
-          Password
-        </label>
-        <input className="input-field" type="password" />
-      </div>
-      <div className="button-container">
-        <div className="button">Login</div>
-        <div className="button">Sign Up</div>
+    <div className="signup-form">
+      <Input
+        label="First Name"
+        type="text"
+        value={signupForm.firstName}
+        placeholder="Taylor"
+        onChange={(e) => handleFirstName(e.target.value)}
+      />
+      <Input
+        label="Last Name"
+        type="text"
+        value={signupForm.lastName}
+        placeholder="Johnson"
+        onChange={(e) => handleLastName(e.target.value)}
+      />
+      <Input
+        label="Email"
+        type="email"
+        value={signupForm.email}
+        placeholder="TJ@emailplaceholder.com"
+        onChange={(e) => handleEmail(e.target.value)}
+      />
+      <Input
+        label="Username"
+        type="text"
+        value={signupForm.username}
+        placeholder="TJohnson123"
+        onChange={(e) => handleUsername(e.target.value)}
+      />
+      <Input
+        label="Password"
+        type="password"
+        value={signupForm.password}
+        placeholder="Password"
+        onChange={(e) => handlePassword(e.target.value)}
+      />
+      <Input
+        label="Re-type Password *"
+        type="password"
+        placeholder="Re-type Password"
+        value={signupForm.confirmPass}
+        onChange={(e) => handleConfirmPassowrd(e.target.value)}
+      />
+      <div className="signup-button" onClick={handleSignup}>
+        Sign Up
       </div>
     </div>
   );

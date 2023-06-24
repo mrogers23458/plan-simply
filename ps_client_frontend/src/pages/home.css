@@ -9,12 +9,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60vw;
-    
+    width: 45vw;
 }
 
 .info {
-    width: 35rem;
+    width: 25vw;
+    text-align: center;
+    font-size: 2vh;
+    color: gray;
+    font-weight: 300;
 }
 
 .tag-line {
@@ -22,7 +25,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35rem;
+    font-size: 2vh;
+    width: 20vw;
 }
 
 .form-container {
@@ -31,5 +35,6 @@
     justify-content: space-evenly;
     align-items: center;
     width: 30vw;
+    
 }
 

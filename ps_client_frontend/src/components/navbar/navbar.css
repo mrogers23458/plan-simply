@@ -6,39 +6,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    width: 99vw;
+    height: 10vh;
+    padding: 2vh;
 }
 
 .logo-text {
     font-family: 'Calligraffitti', cursive, sans-serif;
-    font-size: 2.5rem;
-}
-
-.button {
-    height: 2rem;
-    width: 5rem;
-    margin: 1rem;
-    border-radius: 9999px;
-    color: white;
-    background-color: rgb(20 184 166);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    font-weight: bold;
-}
-
-.button:hover {
-    background-color: rgb(94 234 212);
+    font-size: 6vh;
     cursor: pointer;
 }
 
-.spacer {
-    width: 30vw;
-}
-
-.top-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30vw;
-}
