@@ -1,4 +1,4 @@
-const typeDefs = `#gql
+export const userTypeDefs = `#gql
   type User {
     id: ID!
     firstName: String!
@@ -16,11 +16,13 @@ const typeDefs = `#gql
   type Query {
     users: [User!]!
     user(id: ID!): User
+    me: User
   }
 
   type Mutation {
     createUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Session!
+    login(username: String!, password: String!): Session!
   }
 `;
 
-export default typeDefs;
+export default userTypeDefs;

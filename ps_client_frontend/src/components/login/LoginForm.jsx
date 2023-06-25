@@ -1,18 +1,38 @@
+/* Framework Tools & CSS */
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./loginform.css";
-import Input from "../Input/Input";
+
+/* Hooks */
+import { Link, useNavigate } from "react-router-dom";
 import useLoginFormReducer from "../../hooks/useLoginFormReducer";
-import { SET_PASSWORD, SET_USERNAME } from "../../constants";
+import { useMutation } from "@apollo/client";
+
+/* Components */
+import Input from "../Input/Input";
+
+/* Constants */
+import { SET_PASSWORD, SET_USER, SET_USERNAME } from "../../constants";
+import { LOGIN } from "../../hooks/mutations/userMutations";
+import { useAppState } from "../../providers/AppStateProvider";
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const [loginForm, dispatch] = useLoginFormReducer();
+  const [{ user }, appStateDispatch] = useAppState();
 
-  function handleNav(path) {
-    console.log("click");
-    navigate(`/${path}`);
-  }
+  const [login, { error, loading }] = useMutation(LOGIN, {
+    onError: (e) => {
+      console.error("there was error", e.message);
+    },
+    onCompleted: ({ data }) => {
+      localStorage.setItem("ps_token", data.token);
+      appStateDispatch({
+        type: SET_USER,
+        payload: { me: data.user },
+      });
+      navigate("/dashboard");
+    },
+  });
 
   function handleUsername(value) {
     dispatch({
@@ -28,28 +48,69 @@ export default function LoginForm() {
     });
   }
 
+  async function handleLogin(value) {
+    const { username, password } = value;
+    login({
+      variables: {
+        username: username,
+        password: password,
+      },
+    });
+  }
+
+  function handleLogout() {
+    console.log("fired off");
+    localStorage.removeItem("ps_token");
+    appStateDispatch({
+      type: SET_USER,
+      payload: { me: null },
+    });
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>There was an error.</div>;
+  }
+
   return (
     <div className="form">
-      <Input
-        type="text"
-        label="Username"
-        onChange={(e) => handleUsername(e.target.value)}
-        value={loginForm.username}
-        placeholder="Username"
-      />
-      <Input
-        type="password"
-        label="Password"
-        onChange={(e) => handlePassword(e.target.value)}
-        value={loginForm.password}
-        placeholder="Password"
-      />
-      <div className="button-container">
-        <div className="button">Login</div>
-        <div className="button" onClick={() => handleNav("signup")}>
-          Sign Up
+      {!user && (
+        <>
+          <Input
+            type="text"
+            label="Username"
+            onChange={(e) => handleUsername(e.target.value)}
+            value={loginForm.username}
+            placeholder="Username"
+          />
+          <Input
+            type="password"
+            label="Password"
+            onChange={(e) => handlePassword(e.target.value)}
+            value={loginForm.password}
+            placeholder="Password"
+          />
+          <div className="button-container">
+            <div className="button" onClick={() => handleLogin(loginForm)}>
+              Login
+            </div>
+            <Link className="button" to="/signup">
+              Signup
+            </Link>
+          </div>
+        </>
+      )}
+      {user && (
+        <div className="loggedIn">
+          <p>You are already logged in {user.username}</p>
+          <div className="button" onClick={handleLogout}>
+            Logout
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

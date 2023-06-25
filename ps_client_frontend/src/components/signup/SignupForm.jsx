@@ -37,8 +37,7 @@ export default function SignupForm() {
   }
 
   if (data) {
-    console.log(data);
-    localStorage.setItem("token", data.user.token);
+    localStorage.setItem("ps_token", data.user.token);
     navigate("/dashboard");
   }
 
@@ -84,7 +83,6 @@ export default function SignupForm() {
 
   /* API Handlers */
   async function handleSignup() {
-    console.log("firing");
     const { firstName, lastName, username, email, password, confirmPass } =
       signupForm;
 

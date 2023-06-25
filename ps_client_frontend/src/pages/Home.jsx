@@ -1,6 +1,7 @@
 import React from "react";
 import "./home.css";
 import LoginForm from "../components/login/LoginForm";
+import { useAppState } from "../providers/AppStateProvider";
 
 export default function Home() {
   return (

@@ -1,3 +1,6 @@
+/* App State Reducer Contants */
+export const SET_USER = "SET_USER";
+
 /* Form Reducer Constants */
 export const SET_USERNAME = "SET_USERNAME";
 export const SET_PASSWORD = "SET_PASSWORD";
