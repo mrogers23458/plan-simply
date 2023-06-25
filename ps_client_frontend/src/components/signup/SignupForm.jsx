@@ -1,7 +1,19 @@
+/* Framework Tools & CSS */
 import React from "react";
 import "./signupform.css";
-import Input from "../Input/Input";
+
+/* Hooks */
+import { useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 import useSignupFormReducer from "../../hooks/useSignupFormReducer";
+
+/* Mutations */
+import { CREATE_USER } from "../../hooks/mutations/userMutations";
+
+/* Components */
+import Input from "../Input/Input";
+
+/* Constants */
 import {
   SET_CONFIRM_PASSWORD,
   SET_EMAIL,
@@ -13,6 +25,22 @@ import {
 
 export default function SignupForm() {
   const [signupForm, dispatch] = useSignupFormReducer();
+  const [createUser, { error, loading, data }] = useMutation(CREATE_USER);
+  const navigate = useNavigate();
+
+  if (loading) {
+    return "Submitting...";
+  }
+
+  if (error) {
+    return "There was an error";
+  }
+
+  if (data) {
+    console.log(data);
+    localStorage.setItem("token", data.user.token);
+    navigate("/dashboard");
+  }
 
   /* Form Handlers */
   function handleFirstName(value) {
@@ -56,7 +84,21 @@ export default function SignupForm() {
 
   /* API Handlers */
   async function handleSignup() {
-    console.log({ signupForm });
+    console.log("firing");
+    const { firstName, lastName, username, email, password, confirmPass } =
+      signupForm;
+
+    if (password === confirmPass) {
+      createUser({
+        variables: {
+          firstName: firstName,
+          lastName: lastName,
+          username: username,
+          email: email,
+          password: password,
+        },
+      });
+    }
   }
 
   return (
@@ -103,7 +145,7 @@ export default function SignupForm() {
         value={signupForm.confirmPass}
         onChange={(e) => handleConfirmPassowrd(e.target.value)}
       />
-      <div className="signup-button" onClick={handleSignup}>
+      <div className="signup-button" onClick={() => handleSignup()}>
         Sign Up
       </div>
     </div>
