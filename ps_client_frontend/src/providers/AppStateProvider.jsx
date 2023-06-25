@@ -29,7 +29,7 @@ export const AppStateProvider = ({ children }) => {
       try {
         const { data: me } = await client.query({ query: GET_ME });
         if (me) {
-          console.log(me);
+          console.log("me here", me);
           dispatch({
             type: SET_USER,
             payload: me,

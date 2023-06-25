@@ -6,6 +6,7 @@ export const userTypeDefs = `#gql
     username: String!
     email: String!
     password: String!
+    todos: [ToDo!]
   }
 
   type Session {

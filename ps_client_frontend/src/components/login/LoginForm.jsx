@@ -71,14 +71,11 @@ export default function LoginForm() {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>There was an error.</div>;
-  }
-
   return (
     <div className="form">
       {!user && (
         <>
+          {error && <p>{error.message}</p>}
           <Input
             type="text"
             label="Username"
@@ -105,9 +102,14 @@ export default function LoginForm() {
       )}
       {user && (
         <div className="loggedIn">
-          <p>You are already logged in {user.username}</p>
-          <div className="button" onClick={handleLogout}>
-            Logout
+          <p>You are already logged in as {user.username}</p>
+          <div className="button-container">
+            <Link to="/dashboard" className="button">
+              Dash
+            </Link>
+            <div className="button" onClick={handleLogout}>
+              Logout
+            </div>
           </div>
         </div>
       )}

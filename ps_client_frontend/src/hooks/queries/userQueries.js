@@ -8,6 +8,15 @@ export const GET_ME = gql`
       lastName
       username
       email
+      todos {
+        id
+        title
+        description
+        dueDate
+        completed
+        createdAt
+        updatedAt
+      }
     }
   }
 `;

@@ -9,15 +9,16 @@ export const userResolvers = {
       if (token) {
         console.log({ token });
         const validToken = await jwt.verify(token, "MY_SECRET_KEY");
-        const user = await User.findById(validToken.id);
+        const user = await User.findById(validToken.id).populate("todos");
+        console.log(user.todos);
         return user;
       }
     },
     users: async () => {
-      return await User.find({});
+      return await User.find({}).populate("todos");
     },
     user: async (_, { id }) => {
-      return await User.findById(id);
+      return await User.findById(id).populate("todos");
     },
   },
   Mutation: {

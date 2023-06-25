@@ -1,4 +1,5 @@
-.app {
-    display: flex;
-    flex-direction: column;
+.App {
+    max-width: 98vw;
+    margin: 0.5vw;
+    overflow: hidden;
 }

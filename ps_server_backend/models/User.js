@@ -1,5 +1,6 @@
 import mongoose from "../config/conection.js";
 import bcrypt from "bcrypt";
+import ToDo from "./ToDo.js";
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -23,6 +24,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  todos: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "ToDo",
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
