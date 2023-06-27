@@ -8,46 +8,30 @@
 .todos-card-container {
     margin: 1vw;
     margin-top: -0.5vw;
+    max-height: 70vh;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
-.card-wrapper {
-    border: 1px solid grey;
-    box-shadow: 0px 5px 15px 0px grey;
-    border-radius: 10px;
-    margin: 1.5vh;
-    display: flex;
-    text-align: left;
-    align-items: center;
+/* width */
+::-webkit-scrollbar {
+  width: 0.25vw;
 }
 
-.card-header {
-    display: flex;
-    align-items: center;
-    height: 3vh;
-    padding: 0.5vw 1vw 0vw 0vw;
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(20 184 166);
+  border-radius: 9999px;
+  height: 1vh;
 }
 
-.card-header-text {
-    font-size: 2vh;
-    font-weight: 500;
-    margin-right: 1vw;
-}
-
-.duedate {
-    font-size: 1vw;
-}
-
-.card-body {
-    display: flex;
-}
-
-.checkbox {
-    width: 3vw;
-    margin: 1vw;
-}
-
-.card {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: teal;
 }

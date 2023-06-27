@@ -1,0 +1,52 @@
+.card-wrapper {
+    border: 1px solid grey;
+    box-shadow: 0px 5px 15px 0px grey;
+    border-radius: 10px;
+    margin: 1.5vh;
+    display: flex;
+    text-align: left;
+    align-items: center;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    height: 2.5vh;
+    padding: 0.5vw 1vw 0vw 0vw;
+}
+
+.card-header-text {
+    font-size: 2vh;
+    font-weight: 500;
+    margin-right: 1vw;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 12vw;
+}
+
+.duedate {
+    font-size: 1vw;
+}
+
+.card-body {
+    display: flex;
+    
+    overflow-y: scroll;
+    margin-bottom: 1vh;
+    line-height: 1.5rem;
+}
+
+.checkbox {
+    width: 3vw;
+    margin: 1vw;
+}
+
+.card {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    max-height: 10vh;
+    
+}
+

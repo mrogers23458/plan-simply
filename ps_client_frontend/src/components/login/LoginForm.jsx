@@ -20,7 +20,7 @@ export default function LoginForm() {
   const [loginForm, dispatch] = useLoginFormReducer();
   const [{ user }, appStateDispatch] = useAppState();
 
-  const [login, { error, loading }] = useMutation(LOGIN, {
+  const [login, { error }] = useMutation(LOGIN, {
     onError: (e) => {
       console.error("there was error", e.message);
     },
@@ -61,14 +61,7 @@ export default function LoginForm() {
   function handleLogout() {
     console.log("fired off");
     localStorage.removeItem("ps_token");
-    appStateDispatch({
-      type: SET_USER,
-      payload: { me: null },
-    });
-  }
-
-  if (loading) {
-    return <div>Loading...</div>;
+    window.location.reload();
   }
 
   return (

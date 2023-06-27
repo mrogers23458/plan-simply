@@ -21,3 +21,8 @@
     padding: 1vw;
     font-weight: bold;
 }
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+}
