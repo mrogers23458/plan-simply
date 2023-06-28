@@ -33,10 +33,6 @@ a {
     cursor: pointer;
 }
 
-.button-container {
-    display: flex;
-}
-
 .loggedIn {
     display: flex;
     flex-direction: column;

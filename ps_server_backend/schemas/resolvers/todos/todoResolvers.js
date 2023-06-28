@@ -20,5 +20,21 @@ export const todoResolvers = {
         /* const todo = await ToDo.create({ title, description, dueDate }); */
       }
     },
+    updateCompleted: async (_, { completed, id }, { token }) => {
+      console.log(completed, id);
+      const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+      if (!validToken) {
+        throw new Error("Your session has expired, please login again");
+      }
+      if (validToken) {
+        console.log("valid token");
+        const todo = await ToDo.findById(id);
+        todo.completed = completed;
+        todo.save();
+        console.log(todo);
+        return todo;
+        /* const todo = await ToDo.create({ title, description, dueDate }); */
+      }
+    },
   },
 };

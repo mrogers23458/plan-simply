@@ -1,17 +1,67 @@
 .todos-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 35vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 35vw;
+}
+
+.dashboard-container {
+  display: grid;
+  justify-content: space-evenly;
+  align-items: center;
+  grid-template-columns: 45vw 45vw;
+  padding-bottom: 1vw;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 1vw;
+}
+
+.add-button {
+  cursor: pointer;
+  width: 25vw;
+  color: rgb(20 184 166);
+  border: 1px solid rgb(20 184 166);
+  ;
+  background: white;
+  border-radius: 9999px;
+  font-size: 1.25vw;
+  padding: 1vw;
+  font-weight: bold;
+}
+
+.add-button:hover {
+  background: rgb(20 184 166);
+  color: white;
+}
+
+.tab-container {
+  display: flex;
+  margin: 0vw 1vw 0vw 1vw;
+  padding-left: 0.5vw;
+}
+
+.tab {
+  cursor: pointer;
+  border: 1px solid gray;
+  padding: 0.25vw;
+  width: 6vw;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .todos-card-container {
-    margin: 1vw;
-    margin-top: -0.5vw;
-    max-height: 70vh;
-    overflow-y: scroll;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  margin: 0vw 1vw 0vw 1vw;
+  border: 1px solid gray;
+  border-radius: 10px;
+  max-height: 60vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  padding: 0.5vw;
 }
 
 /* width */
@@ -21,9 +71,9 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(20 184 166);
