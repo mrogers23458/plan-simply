@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently \"cd ps_client_frontend && npm start\" \"cd ps_server_backend && npm start\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -1,0 +1,67 @@
+label {
+    font-size: 2vh;
+    font-weight: 600;
+    color: gray;
+    padding: 0.5vh;
+    margin-bottom: 0.5vh;
+}
+
+.create-todo-container {
+    display: flex;
+    flex-direction: column;
+    width: 35vw;
+    padding: 1vw;
+}
+
+.description-text-area {
+    overflow-y: scroll;
+    border-radius: 10px;
+    height: 10vh;
+    padding: 1vw;
+}
+
+.description-text-area:focus {
+    outline: 1px solid rgb(20 184 166);
+    border: 1px solid rgb(20 184 166);
+}
+
+.create-input-area:focus {
+    outline: 1px solid rgb(20 184 166);
+    border: 1px solid rgb(20 184 166);
+}
+
+.create-date-picker {
+    width: 10vw;
+    height: 4vh;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.create-date-picker:focus {
+    outline: 1px solid rgb(20 184 166);
+    border: 1px solid rgb(20 184 166);
+}
+
+.create-input-area {
+    height: 4vh;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding-left: 1vw;
+}
+
+.due-date-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.due-date-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-button {
+    margin-top: 4.5vh;
+}

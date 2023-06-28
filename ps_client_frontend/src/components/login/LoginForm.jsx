@@ -58,8 +58,8 @@ export default function LoginForm() {
     });
   }
 
+  /* To log user out, remove token from storage, and refresh window */
   function handleLogout() {
-    console.log("fired off");
     localStorage.removeItem("ps_token");
     window.location.reload();
   }

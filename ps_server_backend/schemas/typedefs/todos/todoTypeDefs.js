@@ -9,8 +9,13 @@ type ToDo {
     updatedAt: String
 }
 
+type TodoResponse {
+    todo: ToDo!
+    user: User!
+  }
+
 type Mutation {
-    createToDo(title: String!, description: String!, dueDate: String, completed: Boolean): ToDo!
+    createToDo(title: String!, description: String!, dueDate: String, completed: Boolean): TodoResponse!
 }
 
 type Mutation {

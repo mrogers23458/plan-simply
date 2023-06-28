@@ -1,5 +1,4 @@
 export const sortCompletedLast = (todolist) => {
-  console.log({ todolist });
   const sorted = [...todolist].sort((a, b) => {
     if (a.completed === b.completed) {
       if (a.completed) {

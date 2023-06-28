@@ -34,8 +34,8 @@ export default function SignupForm() {
     onError: (e) => {
       console.error("there was error", e.message);
     },
+    /* when the query finishes, save jwt to local storage and user info to app state */
     onCompleted: ({ user }) => {
-      console.log({ user });
       localStorage.setItem("ps_token", user.token);
       appStateDispatch({
         type: SET_USER,

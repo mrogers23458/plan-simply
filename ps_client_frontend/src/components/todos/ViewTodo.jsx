@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./viewtodo.css";
 
 import { useAppState } from "../../providers/AppStateProvider";
 import { useMutation } from "@apollo/client";
 import { UPDATE_TODO_COMPLETED } from "../../hooks/mutations/todoMutations";
-import { SET_TODO, SET_TODO_LIST, SET_USER } from "../../constants";
+import { SET_TODO, SET_USER } from "../../constants";
+import CreateTodo from "./CreateTodo";
 
 export default function ViewTodo() {
   const [{ currentTodo, user }, appStateDispatch] = useAppState();
@@ -22,10 +23,11 @@ export default function ViewTodo() {
       });
     },
     onError: (e) => {
-      console.log("there was an error", e);
+      console.error("there was an error", e);
     },
   });
 
+  /* sets todo.completed: true */
   function handleComplete() {
     updateCompleted({
       variables: { todoId: currentTodo.id, completed: true },
@@ -35,8 +37,9 @@ export default function ViewTodo() {
       payload: { ...currentTodo, completed: true },
     });
   }
+
+  /* sets todo.completed: false */
   function handleUndo() {
-    console.log("fired off");
     updateCompleted({
       variables: { todoId: currentTodo.id, completed: false },
     });
@@ -45,7 +48,6 @@ export default function ViewTodo() {
       payload: { ...currentTodo, completed: false },
     });
   }
-  console.log({ currentTodo });
 
   return (
     <div className="view-todo-container">
@@ -73,11 +75,9 @@ export default function ViewTodo() {
         </div>
       )}
       {!currentTodo.id && (
-        <div className="create-todo-container">
-          <label>Title</label>
-          <input type="text" />
-          <label>Description</label>
-          <textarea />
+        <div className="create-todo-wrapper">
+          <p className="heading-text">Create a new Todo list item</p>
+          <CreateTodo />
         </div>
       )}
     </div>

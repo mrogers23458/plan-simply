@@ -5,16 +5,9 @@ import bcrypt from "bcrypt";
 export const userResolvers = {
   Query: {
     me: async (_, __, { token }) => {
-      console.log({ token });
-      console.log("me hit");
       if (token) {
-        console.log("if hit");
-        console.log({ token });
         const validToken = await jwt.verify(token, "MY_SECRET_KEY");
-        const decoded = jwt.decode(token, "MY_SECRET_KEY");
-        console.log({ decoded });
         const user = await User.findById(validToken.id).populate("todos");
-        console.log(user.todos);
         return user;
       }
     },
@@ -25,6 +18,7 @@ export const userResolvers = {
       return await User.findById(id).populate("todos");
     },
   },
+
   Mutation: {
     createUser: async (
       _,
@@ -52,7 +46,6 @@ export const userResolvers = {
             expiresIn: "3h",
           }
         ); // TODO: ADD SECRET KEY TO .env File
-        console.log({ user, token });
         return { user, token };
       }
       if (user && !validPass) {

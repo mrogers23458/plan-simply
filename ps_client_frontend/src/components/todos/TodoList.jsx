@@ -19,7 +19,7 @@ export default function TodoList() {
   }
   return (
     <div id="todos-container" className="todos-container">
-      <h1>{user.username}'s ToDos</h1>
+      <p className="heading-text">{user.firstName}'s Todo List</p>
       <div className="tab-container">
         <div
           className="tab"

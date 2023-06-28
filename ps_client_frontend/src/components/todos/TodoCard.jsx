@@ -2,16 +2,17 @@ import dayjs from "dayjs";
 import "./todocard.css";
 import { useAppState } from "../../providers/AppStateProvider";
 export default function TodoCard({ todo }) {
-  const [{ user, todos, currentTodo }, appStateDispatch] = useAppState();
+  const [{ user, currentTodo }, appStateDispatch] = useAppState();
+
+  /* When a card is clicked, this function sets the active todo viewable to the side of the todo list */
   function handleSetTodo(id) {
-    console.log({ todos });
-    const currentTodo = user.todos.find((item) => item.id === id);
+    const activeTodoItem = user.todos.find((item) => item.id === id);
     appStateDispatch({
       type: "SET_TODO",
-      payload: currentTodo,
+      payload: activeTodoItem,
     });
   }
-
+  /* This function will make an update on the todo when checkbox is checked or unchecked */
   function handleUpdateCompleted(value) {
     const prev = value.completed;
     const update = !value.completed;
