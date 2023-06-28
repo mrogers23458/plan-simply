@@ -44,6 +44,8 @@
 }
 
 .tab {
+  color: white;
+  background: rgb(20 184 166);
   cursor: pointer;
   border: 1px solid gray;
   padding: 0.25vw;
@@ -55,7 +57,7 @@
   margin: 0vw 1vw 0vw 1vw;
   border: 1px solid gray;
   border-radius: 10px;
-  max-height: 60vh;
+  height: 50vh;
   overflow-y: scroll;
   -ms-overflow-style: none;
   /* IE and Edge */

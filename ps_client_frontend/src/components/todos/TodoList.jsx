@@ -23,6 +23,7 @@ export default function TodoList() {
       <div className="tab-container">
         <div
           className="tab"
+          style={filter.all ? { background: "teal", color: "white" } : {}}
           onClick={() =>
             setFilter({
               ...filter,
@@ -36,6 +37,7 @@ export default function TodoList() {
         </div>
         <div
           className="tab"
+          style={filter.completed ? { background: "teal", color: "white" } : {}}
           onClick={() =>
             setFilter({
               ...filter,
@@ -48,6 +50,9 @@ export default function TodoList() {
           Completed
         </div>
         <div
+          style={
+            filter.incomplete ? { background: "teal", color: "white" } : {}
+          }
           className="tab"
           onClick={() =>
             setFilter({
