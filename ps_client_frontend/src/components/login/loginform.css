@@ -29,7 +29,7 @@ a {
 }
 
 .button:hover {
-    background-color: rgb(94 234 212);
+    background-color: teal;
     cursor: pointer;
 }
 

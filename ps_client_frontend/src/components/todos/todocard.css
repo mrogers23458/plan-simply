@@ -1,4 +1,6 @@
 .card-wrapper {
+    cursor: default;
+    position: relative;
     border: 1px solid grey;
     box-shadow: 0px 5px 15px 0px grey;
     border-radius: 10px;
@@ -7,6 +9,7 @@
     text-align: left;
     align-items: center;
 }
+
 
 .card-header {
     display: flex;
@@ -25,13 +28,35 @@
     max-width: 12vw;
 }
 
+.card-edit-icon {
+    height: 1.5vh;
+    width: 1.5vw;
+
+}
+
+.card-edit-icon:hover {
+    height: 2vh;
+    width: 2vw;
+    z-index: 100;
+}
+
+.action-icons-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 4vw;
+    cursor: pointer;
+    margin-left: 1vw;
+
+
+}
+
 .duedate {
     font-size: 1vw;
 }
 
 .card-body {
     display: flex;
-    
+
     overflow-y: scroll;
     margin-bottom: 1vh;
     line-height: 1.5rem;
@@ -47,6 +72,5 @@
     width: 100%;
     flex-direction: column;
     max-height: 10vh;
-    
-}
 
+}

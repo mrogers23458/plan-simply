@@ -6,9 +6,11 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_TODO_COMPLETED } from "../../hooks/mutations/todoMutations";
 import { SET_TODO, SET_USER } from "../../constants";
 import CreateTodo from "./CreateTodo";
+import EditTodo from "./EditTodo";
 
 export default function ViewTodo() {
   const [{ currentTodo, user }, appStateDispatch] = useAppState();
+  console.log({ currentTodo });
   const [updateCompleted] = useMutation(UPDATE_TODO_COMPLETED, {
     onCompleted: ({ updatedTodo }) => {
       const updatedTodolist = user.todos.map((item) => {
@@ -51,7 +53,7 @@ export default function ViewTodo() {
 
   return (
     <div className="view-todo-container">
-      {currentTodo.id && (
+      {currentTodo.id && !currentTodo.editing && (
         <div className="view-todo-item">
           <div className="todo-item">
             <p className="todo-title-text">{currentTodo.title}</p>
@@ -74,10 +76,21 @@ export default function ViewTodo() {
           </div>
         </div>
       )}
-      {!currentTodo.id && (
+      {!currentTodo.id && !currentTodo.editing && (
         <div className="create-todo-wrapper">
           <p className="heading-text">Create a new Todo list item</p>
           <CreateTodo />
+        </div>
+      )}
+
+      {currentTodo.editing && (
+        <div className="create-todo-wrapper">
+          <p className="heading-text">Create a new Todo list item</p>
+          <EditTodo
+            title={currentTodo.title}
+            description={currentTodo.description}
+            dueDate={currentTodo.dueDate}
+          />
         </div>
       )}
     </div>

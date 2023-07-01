@@ -1,0 +1,43 @@
+.modal-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: white;
+
+}
+
+.modal-text {
+    font-size: 1.5vh;
+
+}
+
+.modal-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1vh;
+}
+
+.md-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    color: white;
+    background: var(--ps-teal);
+    height: 3vh;
+    width: 5vw;
+    margin: 10px;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.md-button:hover {
+    background: teal;
+}

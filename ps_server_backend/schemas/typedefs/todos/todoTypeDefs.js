@@ -21,4 +21,8 @@ type Mutation {
 type Mutation {
     updateCompleted(id: String!, completed: Boolean!): ToDo!
 }
+
+type Mutation {
+    deleteTodo(id: String!): TodoResponse!
+}
 `;

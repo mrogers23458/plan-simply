@@ -8,7 +8,9 @@ import { GET_ME } from "../hooks/queries/userQueries";
 import { SET_USER, SET_TODO, SET_TODO_LIST } from "../constants";
 const initialState = {
   user: null,
-  currentTodo: {},
+  currentTodo: {
+    editing: false,
+  },
   todos: [],
 };
 

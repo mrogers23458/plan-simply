@@ -47,3 +47,20 @@ export const UPDATE_TODO_COMPLETED = gql`
     }
   }
 `;
+
+export const DELETE_TODO = gql`
+  mutation DeleteTodo($id: String!) {
+    todoResponse: deleteTodo(id: $id) {
+      user {
+        todos {
+          id
+          title
+          description
+          dueDate
+          completed
+          createdAt
+        }
+      }
+    }
+  }
+`;

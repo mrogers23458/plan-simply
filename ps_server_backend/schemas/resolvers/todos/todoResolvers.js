@@ -30,12 +30,22 @@ export const todoResolvers = {
       const validToken = await jwt.verify(token, "MY_SECRET_KEY");
       if (!validToken) {
         throw new Error("Your session has expired, please login again");
-      }
-      if (validToken) {
+      } else {
         const todo = await ToDo.findById(id);
         todo.completed = completed;
         todo.save();
         return todo;
+      }
+    },
+
+    deleteTodo: async (_, { id }, { token }) => {
+      const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+      if (!validToken) {
+        throw new Error("Your session has expired, please login again");
+      } else {
+        await ToDo.deleteOne({ _id: id });
+        const user = await User.findById(validToken.id).populate("todos");
+        return { todo: {}, user: user };
       }
     },
   },

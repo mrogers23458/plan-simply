@@ -1,3 +1,7 @@
+:root {
+    --ps-teal: rgb(20 184 166);
+}
+
 .App {
     max-width: 98vw;
     margin: 0.5vw;
