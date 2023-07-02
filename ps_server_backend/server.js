@@ -16,14 +16,14 @@ const server = new ApolloServer({
 });
 
 await server.start();
-app.use(
-  express.static(
-    path.resolve(
-      new URL(import.meta.url).pathname,
-      "../ps_client_frontend/build"
-    )
-  )
-);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  });
+}
+
 app.use(
   "/graphql",
   cors({
