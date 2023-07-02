@@ -3,9 +3,11 @@ import { expressMiddleware } from "@apollo/server/express4";
 import cors from "cors";
 import express from "express";
 import { typeDefs, resolvers } from "./schemas/index.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 const server = new ApolloServer({
   typeDefs,
@@ -17,7 +19,10 @@ await server.start();
 app.use(
   "/graphql",
   cors({
-    origin: "*",
+    origin: [
+      "https://plan-simply-0a9e4110b7a5.herokuapp.com/",
+      process.env.ORIGIN,
+    ],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
