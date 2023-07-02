@@ -48,10 +48,54 @@ export const UPDATE_TODO_COMPLETED = gql`
   }
 `;
 
+export const UPDATE_TODO = gql`
+  mutation EditTodo(
+    $editTodoId: String!
+    $title: String!
+    $description: String
+    $dueDate: String
+  ) {
+    todoResponse: editTodo(
+      id: $editTodoId
+      title: $title
+      description: $description
+      dueDate: $dueDate
+    ) {
+      user {
+        id
+        firstName
+        lastName
+        email
+        username
+        todos {
+          id
+          title
+          description
+          dueDate
+          completed
+        }
+      }
+      todo {
+        id
+        title
+        description
+        dueDate
+        completed
+        createdAt
+      }
+    }
+  }
+`;
+
 export const DELETE_TODO = gql`
   mutation DeleteTodo($id: String!) {
     todoResponse: deleteTodo(id: $id) {
       user {
+        id
+        firstName
+        lastName
+        username
+        email
         todos {
           id
           title

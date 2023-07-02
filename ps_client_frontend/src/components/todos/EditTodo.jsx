@@ -11,12 +11,12 @@ import {
 } from "../../constants";
 import dayjs from "dayjs";
 import { useMutation } from "@apollo/client";
-import { CREATE_TODO } from "../../hooks/mutations/todoMutations";
+import { UPDATE_TODO } from "../../hooks/mutations/todoMutations";
 import { useAppState } from "../../providers/AppStateProvider";
 
 export default function EditTodo({ title, description, dueDate }) {
   const [todoForm, dispatch] = useCreateTodoReducer();
-  const [, appStateDispatch] = useAppState();
+  const [{ currentTodo }, appStateDispatch] = useAppState();
 
   useEffect(() => {
     dispatch({
@@ -34,21 +34,22 @@ export default function EditTodo({ title, description, dueDate }) {
     });
   }, [title, description, dueDate, dispatch]);
 
-  /*  const [updateTodo] = useMutation(UPDATE_TODO, {
+  const [updateTodo] = useMutation(UPDATE_TODO, {
     onCompleted: ({ todoResponse }) => {
+      const updated = todoResponse.todo;
       appStateDispatch({
         type: SET_USER,
         payload: { me: todoResponse.user },
       });
       appStateDispatch({
         type: SET_TODO,
-        payload: todoResponse.todo,
+        payload: { ...updated, editing: false },
       });
     },
     onError: (e) => {
       console.error(`There was an error ${e.message}`);
     },
-  }); */
+  });
 
   /* updates title input */
   function handleTitle(val) {
@@ -76,7 +77,14 @@ export default function EditTodo({ title, description, dueDate }) {
   }
 
   function handleSaveTodo() {
-    console.log({ todoForm });
+    updateTodo({
+      variables: {
+        editTodoId: currentTodo.id,
+        title: todoForm.title,
+        description: todoForm.description,
+        dueDate: todoForm.dueDate,
+      },
+    });
   }
 
   return (

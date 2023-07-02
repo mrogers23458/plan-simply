@@ -10,7 +10,6 @@ import EditTodo from "./EditTodo";
 
 export default function ViewTodo() {
   const [{ currentTodo, user }, appStateDispatch] = useAppState();
-  console.log({ currentTodo });
   const [updateCompleted] = useMutation(UPDATE_TODO_COMPLETED, {
     onCompleted: ({ updatedTodo }) => {
       const updatedTodolist = user.todos.map((item) => {
@@ -85,7 +84,7 @@ export default function ViewTodo() {
 
       {currentTodo.editing && (
         <div className="create-todo-wrapper">
-          <p className="heading-text">Create a new Todo list item</p>
+          <p className="heading-text">Edit Todo</p>
           <EditTodo
             title={currentTodo.title}
             description={currentTodo.description}

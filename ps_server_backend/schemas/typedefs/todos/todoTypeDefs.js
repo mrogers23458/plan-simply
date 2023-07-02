@@ -25,4 +25,8 @@ type Mutation {
 type Mutation {
     deleteTodo(id: String!): TodoResponse!
 }
+
+type Mutation {
+    editTodo(id: String!, title: String!, description: String, dueDate: String): TodoResponse!
+}
 `;

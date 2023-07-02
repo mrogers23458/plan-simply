@@ -38,6 +38,20 @@ export const todoResolvers = {
       }
     },
 
+    editTodo: async (_, { id, title, description, dueDate }, { token }) => {
+      const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+      if (!validToken) {
+        throw new Error("Your session has expired, please login again");
+      } else {
+        const todo = await ToDo.findById(id);
+        todo.title = title;
+        (todo.description = description), (todo.dueDate = dueDate);
+        todo.save();
+        const user = await User.findById(validToken.id).populate("todos");
+        return { user, todo };
+      }
+    },
+
     deleteTodo: async (_, { id }, { token }) => {
       const validToken = await jwt.verify(token, "MY_SECRET_KEY");
       if (!validToken) {
