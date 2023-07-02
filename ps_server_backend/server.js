@@ -4,6 +4,7 @@ import cors from "cors";
 import express from "express";
 import { typeDefs, resolvers } from "./schemas/index.js";
 import dotenv from "dotenv";
+import path from "path";
 dotenv.config();
 
 const app = express();
@@ -15,7 +16,7 @@ const server = new ApolloServer({
 });
 
 await server.start();
-
+app.use(express.static(path.resolve(__dirname, "./ps_client_frontend/build")));
 app.use(
   "/graphql",
   cors({
