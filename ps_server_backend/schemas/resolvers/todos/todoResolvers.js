@@ -1,6 +1,10 @@
-import User from "../../../models/User.js";
+/* Tools */
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config();
+
+/* Models  */
+import User from "../../../models/User.js";
 import ToDo from "../../../models/ToDo.js";
 
 export const todoResolvers = {
@@ -8,7 +12,7 @@ export const todoResolvers = {
   Mutation: {
     /* creates a new todo, and adds it to the current user */
     createToDo: async (_, { title, description, dueDate }, { token }) => {
-      const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+      const validToken = await jwt.verify(token, process.env.PS_SECRET_KEY);
       if (!validToken) {
         throw new Error("Your session has expired, please login again");
       }
@@ -27,7 +31,7 @@ export const todoResolvers = {
 
     /* updates completed status on todo */
     updateCompleted: async (_, { completed, id }, { token }) => {
-      const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+      const validToken = await jwt.verify(token, process.env.PS_SECRET_KEY);
       if (!validToken) {
         throw new Error("Your session has expired, please login again");
       } else {
@@ -39,7 +43,7 @@ export const todoResolvers = {
     },
 
     editTodo: async (_, { id, title, description, dueDate }, { token }) => {
-      const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+      const validToken = await jwt.verify(token, process.env.PS_SECRET_KEY);
       if (!validToken) {
         throw new Error("Your session has expired, please login again");
       } else {
@@ -53,7 +57,7 @@ export const todoResolvers = {
     },
 
     deleteTodo: async (_, { id }, { token }) => {
-      const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+      const validToken = await jwt.verify(token, process.env.PS_SECRET_KEY);
       if (!validToken) {
         throw new Error("Your session has expired, please login again");
       } else {
