@@ -6,7 +6,7 @@ export const userResolvers = {
   Query: {
     me: async (_, __, { token }) => {
       if (token) {
-        const validToken = await jwt.verify(token, "MY_SECRET_KEY");
+        const validToken = await jwt.verify(token, "PS_JWT_SECRET_KEY");
         const user = await User.findById(validToken.id).populate("todos");
         return user;
       }
@@ -25,7 +25,7 @@ export const userResolvers = {
       { firstName, lastName, username, email, password }
     ) => {
       const user = new User({ firstName, lastName, username, email, password });
-      const token = jwt.sign({ id: user._id }, "MY_SECRET_KEY", {
+      const token = jwt.sign({ id: user._id }, "PS_JWT_SECRET_KEY", {
         expiresIn: "3h",
       }); // TODO: ADD SECRET KEY TO .env File
       await user.save();
@@ -41,7 +41,7 @@ export const userResolvers = {
       if (user && validPass) {
         const token = await jwt.sign(
           { id: user._id, username: user.username, password: user.password },
-          "MY_SECRET_KEY",
+          "PS_JWT_SECRET_KEY",
           {
             expiresIn: "3h",
           }
