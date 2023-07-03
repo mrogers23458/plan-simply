@@ -22,6 +22,22 @@ export default function TodoList() {
       <p className="heading-text">{user.firstName}'s Todo List</p>
       <div className="tab-container">
         <div
+          style={
+            filter.incomplete ? { background: "teal", color: "white" } : {}
+          }
+          className="tab"
+          onClick={() =>
+            setFilter({
+              ...filter,
+              all: false,
+              completed: false,
+              incomplete: true,
+            })
+          }
+        >
+          Todo
+        </div>
+        <div
           className="tab"
           style={filter.all ? { background: "teal", color: "white" } : {}}
           onClick={() =>
@@ -48,22 +64,6 @@ export default function TodoList() {
           }
         >
           Completed
-        </div>
-        <div
-          style={
-            filter.incomplete ? { background: "teal", color: "white" } : {}
-          }
-          className="tab"
-          onClick={() =>
-            setFilter({
-              ...filter,
-              all: false,
-              completed: false,
-              incomplete: true,
-            })
-          }
-        >
-          Incomplete
         </div>
       </div>
       <div id="todo-card-container" className="todos-card-container">
