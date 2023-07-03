@@ -33,10 +33,6 @@ export default function ViewTodo() {
     updateCompleted({
       variables: { todoId: currentTodo.id, completed: true },
     });
-    appStateDispatch({
-      type: SET_TODO,
-      payload: { ...currentTodo, completed: true },
-    });
   }
 
   /* sets todo.completed: false */

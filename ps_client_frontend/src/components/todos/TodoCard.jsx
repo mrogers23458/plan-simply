@@ -30,10 +30,6 @@ export default function TodoCard({ todo }) {
         type: SET_USER,
         payload: { me: { ...user, todos: updatedTodolist } },
       });
-      appStateDispatch({
-        type: SET_TODO,
-        payload: updatedTodo,
-      });
     },
     onError: (e) => {
       console.error("there was an error", e);
@@ -42,7 +38,13 @@ export default function TodoCard({ todo }) {
 
   /* When a card is clicked, this function sets the active todo viewable to the side of the todo list */
   function handleSetTodo(value) {
-    if (value.id !== "edit" && value.id !== "delete") {
+    console.log(value.id);
+    if (
+      value.id !== "edit" &&
+      value.id !== "delete" &&
+      value.id !== "list-item-checkbox"
+    ) {
+      console.log("dispatch");
       appStateDispatch({
         type: "SET_TODO",
         payload: todo,
