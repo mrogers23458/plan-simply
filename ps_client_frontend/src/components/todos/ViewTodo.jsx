@@ -12,6 +12,7 @@ export default function ViewTodo() {
   const [{ currentTodo, user }, appStateDispatch] = useAppState();
   const [updateCompleted] = useMutation(UPDATE_TODO_COMPLETED, {
     onCompleted: ({ updatedTodo }) => {
+      console.log({ updatedTodo });
       const updatedTodolist = user.todos.map((item) => {
         if (item.id !== updatedTodo.id) {
           return item;
@@ -21,6 +22,10 @@ export default function ViewTodo() {
       appStateDispatch({
         type: SET_USER,
         payload: { me: { ...user, todos: updatedTodolist } },
+      });
+      appStateDispatch({
+        type: SET_TODO,
+        payload: updatedTodo,
       });
     },
     onError: (e) => {

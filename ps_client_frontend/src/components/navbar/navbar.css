@@ -5,11 +5,11 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 99vw;
+    justify-content: space-between;
     height: 10vh;
     padding: 2vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
 }
 
 .logo-text {
@@ -17,4 +17,3 @@
     font-size: 6vh;
     cursor: pointer;
 }
-
