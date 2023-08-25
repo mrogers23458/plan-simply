@@ -17,3 +17,9 @@
     font-size: 6vh;
     cursor: pointer;
 }
+
+.align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
