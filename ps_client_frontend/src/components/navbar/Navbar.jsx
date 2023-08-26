@@ -28,7 +28,7 @@ export default function Navbar() {
           </div>
           <div className="align">
             <Link to="/profile">
-              <ProfileBtn size="2rem" />
+              <ProfileBtn size="2vh" />
             </Link>
           </div>
         </div>
