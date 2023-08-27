@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { handleLogout } from "../../helpers/helpers";
 import { useAppState } from "../../providers/AppStateProvider";
-import ProfileBtn from "../../components/profileBtn/ProfileBtn";
+import RoundBtn from "../roundBtn/RoundBtn";
+import gearIcon from "../../images/gear-solid.svg";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function Navbar() {
           </div>
           <div className="align">
             <Link to="/profile">
-              <ProfileBtn size="2vh" />
+              <RoundBtn icon={gearIcon} />
             </Link>
           </div>
         </div>
