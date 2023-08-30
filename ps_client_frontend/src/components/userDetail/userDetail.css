@@ -1,0 +1,12 @@
+.detail-container {
+    width: 20vw;
+}
+
+.value {
+    height: 4vh;
+    padding-left: 1vw;
+}
+
+p {
+    font-size: smaller;
+}

@@ -9,6 +9,7 @@ import back from "../../images/arrow-left-solid.svg";
 import save from "../../images/floppy-disk-solid.svg";
 
 import Input from "../../components/Input/Input";
+import UserDetail from "../../components/userDetail/UserDetail";
 
 export default function Profile() {
   const [{ user }, appStateDispatch] = useAppState();
@@ -25,11 +26,11 @@ export default function Profile() {
         <div>
           <h1>Edit Settings</h1>
           <RoundBtn icon={userEdit} onClick={() => setEditMode(true)} />
-          <p>Email: {user.email}</p>
-          <p>First Name: {user.firstName}</p>
-          <p>Last Name: {user.lastName}</p>
-          <p>Username: {user.username}</p>
-          <p>Password: **********</p>
+          <UserDetail label="Email:" value={user.email} />
+          <UserDetail label="First Name:" value={user.firstName} />
+          <UserDetail label="Last Name:" value={user.lastName} />
+          <UserDetail label="Username:" value={user.username} />
+          <UserDetail label="Password:" value={"********"} />
         </div>
       )}
       {editMode && (
