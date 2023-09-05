@@ -17,7 +17,6 @@ export const todoResolvers = {
         throw new Error("Your session has expired, please login again");
       }
       if (validToken) {
-        /* const user = await User.findById(validToken.id).populate("todos"); */
         const todo = await ToDo.create({ title, description, dueDate });
         const user = await User.findByIdAndUpdate(
           validToken.id,

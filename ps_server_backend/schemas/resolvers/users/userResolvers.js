@@ -35,6 +35,20 @@ export const userResolvers = {
       return { user, token };
     },
 
+    editUser: async (
+      _,
+      { firstName, lastName, username, email, password },
+      { token }
+    ) => {
+      const user = await User.findOne({ username: username });
+      if (!user) {
+        throw new Error("No user found with this username.");
+      }
+      const validPass = await bcrypt.compare(password, user.password);
+      if (user && validPass) {
+      }
+    },
+
     login: async (_, { username, password }) => {
       const user = await User.findOne({ username: username });
       if (!user) {
