@@ -55,6 +55,38 @@ export const userResolvers = {
         throw new Error("Passwords do not match!");
       }
     },
+
+    editUser: async (
+      _,
+      { id, email, firstName, lastName, username, password },
+      { token }
+    ) => {
+      const validToken = await jwt.verify(token, process.env.PS_JWT_SECRET_KEY);
+      if (!validToken) {
+        throw new Error("Your session has expired, please login again");
+      } else {
+        const user = await User.findById(id);
+        if (email && email !== user.email) {
+          user.email = email;
+        }
+        if (firstName && firstName !== user.firstName) {
+          user.firstName = firstName;
+        }
+        if (lastName && lastName !== user.lastName) {
+          user.lastName = lastName;
+        }
+        if (username && username !== user.username) {
+          user.username = username;
+        }
+        if (password && !bcrypt.compare(password, user.password)) {
+          user.password = password;
+        }
+        console.log({ id, email, firstName, lastName, username, password });
+        user.save();
+        console.log({ user });
+        return user;
+      }
+    },
   },
 };
 

@@ -23,6 +23,7 @@ type User {
   type Mutation {
     createUser(firstName: String!, lastName: String!, username: String!, email: String!, password: String!): Session!
     login(username: String!, password: String!): Session!
+    editUser(id: String!, email: String, firstName: String, lastName: String, username: String, password: String): User!
   }
 `;
 
