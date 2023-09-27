@@ -21,7 +21,7 @@ export default function Input({ label, type, onChange, value, placeholder }) {
 }
 
 Input.propTypes = {
-  // String to lable what the input is for e.g. "Username"
+  // String to label what the input is for e.g. "Username"
   label: PropTypes.string,
   // String that defines what type of input is accepted e.g. "text" or "checkbox"
   type: PropTypes.string,

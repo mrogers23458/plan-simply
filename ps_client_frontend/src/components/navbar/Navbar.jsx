@@ -10,7 +10,6 @@ import gearIcon from "../../images/gear-solid.svg";
 export default function Navbar() {
   const navigate = useNavigate();
   const [{ user }] = useAppState({});
-  console.log({ user });
   function handleNav(path) {
     navigate(`/${path}`);
   }
